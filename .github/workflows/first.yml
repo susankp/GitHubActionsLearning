@@ -12,9 +12,9 @@ jobs:
       - name: Check out source code
         uses: actions/checkout@v7.0.1
       - run: ettt
-      name: Execute during failure
-      if: ${{failure()}}
-      run: echo "One of the step failed"
+      - name: Execute during failure
+        if: ${{failure()}}
+        run: echo "One of the step failed"
       
 
   Test_Job2:
