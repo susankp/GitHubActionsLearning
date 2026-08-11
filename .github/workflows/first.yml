@@ -6,15 +6,20 @@ jobs:
   Test_Job1:
     name: Test Job
     runs-on: windows-latest
+    env:
+      DRIVER: 'RemoteWebDriver'
 
     steps:
       - run: echo "This is running inside a ${{runner.name}} server in GitHub"
       - name: Check out source code
         uses: actions/checkout@v7.0.1
-      - run: ettt
+      - run: echo "HEllO!!!"
       - name: Execute during failure
         if: ${{failure()}}
         run: echo "One of the step failed"
+      - name: Run Selenium Test
+        if: ${{env.DRIVER == 'RemoteWebDriver'}}
+        run: echo "Inside if condition"
       
 
   Test_Job2:
